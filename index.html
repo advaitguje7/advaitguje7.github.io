@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Advait's Website </title>
+        <h1 align="center"> Advait Guje </h1>
+
+        <style>
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                /* width | style | color */
+                border-left: 150px solid #2f304f;
+                border-right: 150px solid #2f304f; 
+
+                pointer-events: none; /* Allows users to click elements underneath */
+                z-index: 9999; /* Keeps the border on top of all content */
+                
+        }
+
+            .grid-gallery {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+
+            .grid-gallery img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            @media (max-width: 600px) {
+                body::before {
+                    border-left: 40px solid #2f304f;
+                    border-right: 40px solid #2f304f;
+                }
+                body {
+                    margin: 20px 60px !important;
+                }
+                .grid-gallery {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="margin: 40px 250px;">
+        <p align="center"> Electrical Engineering | Virginia Tech </p>
+        <p align="center"> <a href="https://www.linkedin.com/in/advait-guje-b826012b1/" target="_blank">LinkedIn</a> | 
+<a href="https://github.com/advaitguje7" target="_blank">Github</a> |
+        email: advaitg108@vt.edu </p>
+    <hr>
+
+        <h2 align="center" style="background-color:rgb(221, 216, 216)"> About Me </h2>	
+            <p align="left"> 
+                I'm an Electrical Engineering junior at Virginia Tech, concentrating in Micro/Nano Systems. 
+                My projects tend to start with a specific problem I want solved, such as amplifying my acoustic guitar or playing Minecraft with better controls, and end with me learning the theory underneath it. 
+                This has pulled me into embedded systems, PCB design, analog circuit design, and increasingly into semiconductor fabrication.
+                <br><br>I'm currently an intern with NAWCAD's Advanced Systems group, working on data acquisition testing and validation for flight test instrumentation.
+
+                <br><br> I am also  passionate about music, particularly Indian Classical Music, and I enjoy playing the <i>tabla</i>, <i>sitar</i>, and acoustic guitar.
+            </p>
+
+    <hr>
+
+        <h2 align="center" style="background-color:rgb(221, 216, 216)"> My Projects </h2>
+
+            <p><b> (1) Wireless Gamepad</b> - 
+                <a href="https://github.com/advaitguje7/Wireless-Gamepad.git" target="_blank">Github</a> | 
+                <a href="assets/WirelessGamepad/Wireless_Gamepad_Documentation.pdf" target="_blank" style="color:blue;">Documentation</a><br>
+                    <i>bluetooth video game controller based in C++ using an ESP-32 </i></p>
+            </p>
+            <hr>
+            <p> <b> (2) Piezo Pickup</i></b> 
+                <!-- <a href="https://github.com/advaitguje7/Class-A-Amplifier-Design-Tool.git" target="_blank">Github</a>
+                 <a href="assets/Coming_Soon.html" target="_blank" style="color:red;">Documentation in progress</a><br> -->
+                    <br><i>five-stage bipolar/mosfet transistor audio amplifier with passive filtering and a piezo transducer</i></p>
+                    <p><b>Specifications: </b>To design an audio amplifier which delivers an average power of 0.1 W to an 8-ohm speaker from a piezoelectric transducer that produces a 100 mV peak sinusoidal signal.</p>
+                    <h3 align="center"><u>Design Overview</u></h3>
+                    <p>This project combines my passion for music and analog circuit design. I designed it around an acoustic guitar, but I aim to improve the design to allow it to be used for anyone's preferred acoustic instrument. <br><br> 
+                        As the name suggests, the pickup uses a piezoelectric sensor/transducer to capture vibrations off the body of an instrument. 
+                        After placing the transducer stage, the next logical step would be to add a buffer stage to reduce loading effects of the piezoelectric pickup. 
+                        However, a piezo is not your average input.<br><br>
+                        
+                        A piezoelectric transducer uses the <i>piezoelectric effect</i>, which means it accumulates an electric charge when stressed mechanically. 
+                        This effect causes it to behave more like a voltage source with a small capacitor in series. 
+                        If a circuit with a low resistance is added, the circuit behaves like a high-pass RC filter with a high cutoff frequency. 
+                        Therefore, low-band frequencies are attenuated, and the output signal sounds thin.
+                        (You can hear this when your'e connecting a piezo directly to an audio power amplifier, such as an LM386).<br><br>  
+                        
+                        <img src="assets/PiezoPickup/PiezoelectricModel.png" width="200" alt="Electrically Equivalent Model of Piezoelectric Transducer" style="display: block; margin: 0 auto;"><br>
+
+                        We can add a source-follower n-channel MOSFET circuit (which has a very high input impedance) to account for this.
+                        The high input impedance reduces the high-pass cutoff frequency, allowing most of the signal to pass through unaffected.
+                        A low-pass RC filter is then placed at the output to limit the frequency range to below 2kHz, which is the most I want need my acoustic guitar to output. 
+                        The high-pass filters (capacitors) between stages limit the lower-bound of the frequency range to 80Hz. 
+
+                        <br><br>The low-pass filter leads into a another buffer, this time an emitter-follower, that reduces the loading effect before we actually amplify the signal in the gain stage. 
+                        The gain stage comprises two common-emitters designed with gains of 3.3 and 4 respectively. 
+                        It drives the final emitter-follower, which provides current gain and lowers the output impedance (again)  to drive an 8-ohm speaker at 100mW. 
+                        (Yes, it is low, but that's class A amplifiers for you. Any higher would send the transistors into cutoff or saturation).</p>
+
+                        <img src="assets/PiezoPickup/PiezoelectricBlockDiagram.png" width="550" alt="Block Diagram of overall Circuit"style="display: block; margin: 0 auto;"><br>
+
+                        <img src="assets/PiezoPickup/PiezoSchematic.png" alt="Schematic of Circuit"width="800" style="display: block; margin: 0 auto;"><br>
+
+                        <br>
+
+                        <h3 align="center"><u>Simulation</u></h3>
+                        <p>Once the circuit is designed, I simulated the output as a sine wave with an amplitude of 100mV. 
+                        I decided on this value after attaching a piezo with a 1M resistor across the leads onto my guitar.
+                        After a couple of strums, I got with an average peak-to-peak value of 100mV. You can see the resulting transient and ac analyses below, which show a voltage gain of approximately 10 (20dB).
+                        
+                        <br><br>A note: the MOSFET buffer lowers the input amplitude slightly since a source-follower circuit has a gain of less than 1.
+                        
+                        <article class="grid-gallery">
+                            <img src="assets/PiezoPickup/PiezoTransient.png" alt="Transient Simulation" width="500" style="border-radius: 12px;"/>
+                            <img src="assets/PiezoPickup/PiezoAC.png" alt="AC Analysis" width="500" style="border-radius: 12px;"/>
+                        </article>
+                        
+                        </p>
+                        <br>
+                        
+                        <h3 align="center"><u>Prototyping</u></h3>
+                        <article class="grid-gallery">
+                            <img src="assets/PiezoPickup/PiezoPrototypeOverhead.png" alt="Overhead view of Prototype" width="500" style="border-radius: 12px;"/>
+                            <img src="assets/PiezoPickup/PiezoPrototypeSide.png" alt="Side view of Prototype" width="500" style="border-radius: 12px;"/>
+                        </article>
+
+
+            <hr>
+            <p> <b> (3) TablaGestures</b> - <a href="https://github.com/advaitguje7/TablaGestures.git" target="_blank">Github</a><br>
+                    <i>rhythm interface based in OpenCV and Mediapipe to count through a taal on your hands</i></p>
+
+                    <p>
+                        <h3 align="center"><u>How does Indian Classical Rhythm Work?</u></h3>
+                        Indian Classical percussion is based on the <i>taal</i>, or a rhythm cycle, upon which the melody is improvised.
+                        Each "note" produced by a percussive instrument (such as a tabla, dholak, or mridangam) is assigned a distinctive syllable, not dissimilar to solfege (or as we'd say, <i>sargam</i>). 
+                        As an example, the first taal a student learns is <i>Teentaal</i>, which is a 16-beat cycle with accents on the first, fifth, and thirteenth beats, as shown below: <br>
+                        <br><i><b>Dha</b> Dhin Dhin Dha | <b>Dha</b> Dhin Dhin Dha | Dha Tin Tin Ta | <b>Ta</b> Dhin Dhin Dha</i><br><br>
+
+                        We can count through a cycle using the joints and tips of the fingers on our hand. 
+                        TablaGestures is a program based in Python using MediaPipe in OpenCV to visualize these beats.<br><br>
+
+                        <p><b>Read the Github for a more comprehensive + technical description of this project!</b></p>
+
+                        <img src="assets/TablaGestures/TablaDemo.png" alt="Demo of TablaGestures" width="400" style="display: block; margin: 0 auto; border-radius: 12px;"/>
+
+
+                    </p>
+
+            <p> <b> (4) Maze Traversal Robot</b> - 
+                <a href="https://github.com/advaitguje7/AntRepellinator.git" target="_blank">Github</a> |
+                <a href="assets/Coming_Soon.html" target="_blank" style="color:red;">Documentation in progress </a><br>
+                    <i>autonomous maze-traversal robot</i></p>
+
+    <hr>
+
+        <h2 align="center" style="background-color:rgb(221, 216, 216)"> Awards </h2>
+            <ul>
+                <li> <p >President Walker Award - Pennsylvania State University (2025) </p> </li>
+            </ul>
+    <hr>
+        <h2 align="center" style="background-color:rgb(221, 216, 216)"> Internships </h2>
+        <ul>
+            <li>Flight Test Instrumentation Intern | NAWCAD | <i>June - August 2026</i></li>
+        </ul>
+
+        <div class="bottom-bar"></div>
+    </body>
+</html>
