@@ -22,8 +22,8 @@
                 border-left: 150px solid #2f304f;
                 border-right: 150px solid #2f304f; 
 
-                pointer-events: none; /* Allows users to click elements underneath */
-                z-index: 9999; /* Keeps the border on top of all content */
+                pointer-events: none; 
+                z-index: 9999;
                 
         }
 
@@ -98,13 +98,13 @@
                         This effect causes it to behave more like a voltage source with a small capacitor in series. 
                         If a circuit with a low resistance is added, the circuit behaves like a high-pass RC filter with a high cutoff frequency. 
                         Therefore, low-band frequencies are attenuated, and the output signal sounds thin.
-                        (You can hear this when your'e connecting a piezo directly to an audio power amplifier, such as an LM386).<br><br>  
+                        (You can hear this when you're connecting a piezo directly to an audio power amplifier, such as an LM386).<br><br>  
                         
                         <img src="assets/PiezoPickup/PiezoelectricModel.png" width="200" alt="Electrically Equivalent Model of Piezoelectric Transducer" style="display: block; margin: 0 auto;"><br>
 
                         We can add a source-follower n-channel MOSFET circuit (which has a very high input impedance) to account for this.
                         The high input impedance reduces the high-pass cutoff frequency, allowing most of the signal to pass through unaffected.
-                        A low-pass RC filter is then placed at the output to limit the frequency range to below 2kHz, which is the most I want need my acoustic guitar to output. 
+                        A low-pass RC filter is then placed at the output to limit the frequency range to below 2kHz, which is the most I need my acoustic guitar to output. 
                         The high-pass filters (capacitors) between stages limit the lower-bound of the frequency range to 80Hz. 
 
                         <br><br>The low-pass filter leads into a another buffer, this time an emitter-follower, that reduces the loading effect before we actually amplify the signal in the gain stage. 
