@@ -6,8 +6,8 @@
 
         <style>
             body {
-                font-family: monospace;
-                font-size: 0.9375rem;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: rem;
 
             }
             body::before {
@@ -77,11 +77,11 @@
         <h2 align="center" style="background-color:rgb(221, 216, 216)"> My Projects </h2>
 
             <details>
-            <summary><b>Piezo Pickup:</b>five-stage BJT/MOSFET transistor audio amplifier</summary>
+            <summary><b>Piezo Pickup:</b> five-stage BJT/MOSFET transistor audio amplifier</summary>
             <hr>
                 <p>
                     <p><b>Specifications: </b>To design an audio amplifier which delivers an average power of 0.1 W to an 8-ohm speaker from a piezoelectric transducer that produces a 100 mV peak sinusoidal signal.</p>
-                    <h3 align="left"><u>Design Overview</u></h3>
+                    <h2 align="left">1. Design Overview</h2>
                     <p>This project combines my passion for music and analog circuit design. I designed it around an acoustic guitar, but I aim to improve the design to allow it to be used for anyone's preferred acoustic instrument. <br><br> 
                         As the name suggests, the pickup uses a piezoelectric sensor/transducer to capture vibrations off the body of an instrument. 
                         After placing the transducer stage, the next logical step would be to add a buffer stage to reduce loading effects of the piezoelectric pickup. 
@@ -111,7 +111,7 @@
 
                         <br>
 
-                        <h3 align="left"><u>Simulation</u></h3>
+                        <h2 align="left">2. Simulation</h2>
                         <p>Once the circuit is designed, I simulated the output as a sine wave with an amplitude of 100mV. 
                         I decided on this value after attaching a piezo with a 1M resistor across the leads onto my guitar.
                         After a couple of strums, I got with an average peak-to-peak value of 100mV. You can see the resulting transient and ac analyses below, which show a voltage gain of approximately 10 (20dB).
@@ -126,17 +126,19 @@
                         </p>
                         <br>
                         
-                        <h3 align="left"><u>Prototyping</u></h3>
+                        <h2 align="left">3. Prototyping</h2>
                         <article class="grid-gallery">
                             <img src="assets/PiezoPickup/PiezoPrototypeOverhead.png" alt="Overhead view of Prototype" width="500" style="border-radius: 12px;"/>
                             <img src="assets/PiezoPickup/PiezoPrototypeSide.png" alt="Side view of Prototype" width="500" style="border-radius: 12px;"/>
                         </article>
 
                 </details>
-
+                <hr>
                 <details>
                     <summary><b>Wireless Gamepad: </b>bluetooth video game controller based in C++ using an ESP-32</summary>
                     <p>
+                        <!-- <img src="assets/WirelessGamepad/GamepadIsometric.jpg" width="300" align="right" style="border-radius: 12px;"/> -->
+
                         <h2>1. Overview</h2>
                             <p>
                                 This device is a bluetooth video game controller that runs on an ESP-32 in C++. The project was 
@@ -144,12 +146,7 @@
                                 HAL-architecture that the user can modify as per their needs. The goal was to re-create a game 
                                 controller as accurately as possible. The gamepad is currently only compatible/usable with iOS.
                             </p>
-
-                            <!-- Image Placeholder 1 -->
-                            <div class="image-placeholder">
-                                📷 [Gamepad Overview Image Placeholder]
-                                <span>Insert device diagram or hardware snapshot here</span>
-                            </div>
+                            
 
                         <h2>2. Motivation</h2>
                             <p>
@@ -157,6 +154,7 @@
                                 pocket edition interface. I was about to take ECE 2564: Embedded Systems, so this felt like the 
                                 perfect opportunity to build my own controller and implement the concepts I learned in the course.
                             </p>
+
                             <p>
                                 V1 was a purely experimental endeavor with no regard for planning, design, or forethought. I just 
                                 cloned a BLE library and mapped switches to various inputs. I started with basic strafing using four 
@@ -165,17 +163,19 @@
                             </p>
                             <p>
                                 I then showed it to my professor, who gave me guidance on how to improve it. As she put it so 
-                                eloquently, "This code would get a failing grade if this was submitted in my class."
+                                eloquently, "This code would get a failing grade if this was submitted in my class."<br><br>
+
+                                I implemented her advice in V2.
                             </p>
+                            <div>
+                                <article class="grid-gallery">
+                                    <img src="assets/WirelessGamepad/InitialGamepadPrototype.jpg" alt="Initial Gamepad Iteration 1" width="200" style="border-radius: 12px;"/>
+                                    <img src="assets/WirelessGamepad/OldGamepadAbove.jpg" alt="Initial Gamepad Iteration 2" width="350" style="border-radius: 12px;"/>
+                                </article>    
+                                <p class="gallery-subtitle" align="center"><i>Figure 1 & 2: Early iterations</i></p>
+                            </div>
 
-                                <!-- Image Placeholder 2 -->
-                                <div class="image-placeholder">
-                                    📷 [Gamepad Schematic / V1 Architecture Placeholder]
-                                    <span>Insert hardware schematics or V1 code logic flow here</span>
-                                </div>
-
-                                </div>
-                                <h2>3. Hardware</h2>
+                            <h2>3. Hardware</h2>
                                     <p>
                                         <strong>Figure 3: Final Prototype Iteration (V2) Parts:</strong>
                                     </p>
@@ -186,34 +186,51 @@
                                         <li>Horizontal Momentary Switches (x2) [Triggers]</li>
                                         <li>Horizontal Tactile Switches (x2) [LB, RB]</li>
                                     </ul>
-                                    <p>
                                 The PCB is a 4-layer board. The design can be made with a 2-layer design quite easily, as per the Espressif’s technical documentation, but I wanted to try my hand at a more complicated design.
-                    </p>
+                                I created custom footprints for the LB, RB, LT, and RT inputs to allow for horizontal switches to be soldered. 
+                                <br>
 
-                                <!-- Image Placeholder 3 -->
-                                <div class="image-placeholder">
-                                    📷 [Figure 4: Schematic]
-                                    <span>Insert circuit diagram schematic here</span>
-                                </div>
+                                    <article class="grid-gallery">
 
-                                <!-- Image Placeholder 4 -->
-                                <div class="image-placeholder">
-                                    📷 [Figure 5: PCB]
-                                    <span>Insert PCB layout design layers here</span>
-                                </div>
+                                        <figure class="schematic-figure">
+                                            <img src="assets/WirelessGamepad/Gamepad_Schematic.png"
+                                                alt="KiCad schematic of wireless gamepad"
+                                                width="600"
+                                                style="border-radius: 12px;"/>
+                                            <figcaption><i>Figure 3: KiCad schematic of the wireless gamepad PCB</i></figcaption>
+                                        </figure>
 
-                                <!-- Image Placeholder 5 -->
-                                <div class="image-placeholder">
-                                    📷 [Figure 5: 3D Render]
-                                    <span>Insert 3D model render of finished board assembly here</span>
-                                </div>
+                                        <figure class="schematic-figure">
+                                            <img src="assets/WirelessGamepad/PCBRoutes.png"
+                                                alt="PCB routing"
+                                                width="600"
+                                                style="border-radius: 12px;"/>
+                                            <figcaption><i>Figure 4: PCB Routing</i></figcaption>
+                                        </figure>
+
+                                        <figure class="schematic-figure">
+                                            <img src="assets/WirelessGamepad/Gamepad_Render.png"
+                                                alt="3D render of wireless gamepad PCB"
+                                                width="600"
+                                                style="border-radius: 12px;"/>
+                                            <figcaption><i>Figure 5: 3D Render</i></figcaption>
+                                        </figure>
+
+                                    </article>
 
                 <h2>4. Software</h2>
                     <p>
-                        The firmware was developed in C++ using a modular architecture designed to separate hardware-specific functionality from application logic. All inputs were sampled once a cycle within the main loop, allowing the controller to remain responsive while simultaneously handling button processing, joystick updates, and Bluetooth communication.
+                        The software was developed in C++ using a modular architecture designed to separate hardware-specific functionality from application logic. 
+                        All inputs are non-blocking, as in they are sampled once a cycle within the main loop, allowing the controller to remain responsive while simultaneously handling button processing, joystick updates, and Bluetooth communication.
                     </p>
 
-                </div>
+                <h2> 5. Future Work </h2>
+                    <p>
+                        <ul>
+                            <input type="checkbox"> Order the PCB and pertinant components and solder the final circuit board.<br>
+                            <input type="checkbox"> Design and 3D print a controller case.
+                        </ul>
+                    </p>
 
                 </p>
                 </details>
