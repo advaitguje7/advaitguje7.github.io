@@ -94,30 +94,99 @@
                                 <b>Design Process:</b><br>
                                 I built this over the summer of 2026 with the goal of achieving um-scale patterns. I'd work on this during the evenings while participating in an internship at NAVAIR during the day. This project involves hours of parsing dense research, watching and re-watching YouTube videos, and designing and re-designing CAD mounts. I had a lot of fun over the course of the summer, and I'm very excited for where this project will go.<br><br>
 
-                                The design is based on the Heidelberg article: 40 Years of Direct Writing. The motion system is based on a combination of the designs developed by Sam Zeloof, BreakingTaps, HuygensOptics, and the HackerFab community. However, this project departs from the design in that it uses a laser, as opposed to a DMM to pattern chips. <br><br>
+                                The design is based on the Heidelberg article: 40 Years of Direct Writing. 
+                                The motion system is based on a combination of the designs developed by Sam Zeloof, BreakingTaps, HuygensOptics, and the HackerFab community. 
+                                However, this project departs from the design in that it uses a laser, as opposed to a Digital Mirror Device (DMD) to pattern chips. <br><br>
+
+                                <b>Part I: Understanding The System</b><br>
+                                The first step was understanding how all these components worked and integrated into the larger system. 
+                                The components I included were a laser, condenser lens, and a microscope objective. 
+                                I originally had a 20um pinhole for spatial filtering. 
+                                However, since I was building this in the basement of an AirBnB, I did not have access to the precision equipment I'd need to align a pinhole with my optical chain. 
+                                So, I elected to discard it from my initial prototypes. 
+                            
+
+                                The overaching system can be seen below.
                                 <img src="assets/DWL/SimplifiedSystem.png" width="450" alt="Simplified System Overview" style="display: block; margin: 0 auto;"><br>
 
-                                The first step was bringing this design into reality using custom 3D printed optical mounts. I went through over 5 iterations of mounts to hold the laser, condenser lens, and microscope objective. I struggled a lot with aligning the condenser lens with a 20um pinhole, and eventually set the pinhole aside for the initial design. 
+                                The laser beam enters a collimating lens, which focuses and then diverges the collimated beam. 
+                                This beam expands to approximately the dimensions of the entrance pupil of the microscope objective. 
+                                To be more exact, the beam actually expands to a diameter slightly larger than the entrance pupil of the objective. 
+                                This is to ensure the beam is fully captured by the objective. 
+                                The beam then travels through the objective, which focuses the beam to a spot. 
+                                The size of the spot is determined by the wavelength of the laser, the numerical aperture of the objective, and the wavelength of the laser.
+                                The spot size is given by the equation: <b>
+                                &omega;<sub>f</sub> = &lambda;f / &pi; &omega;<sub>0</sub> </b>, which keeps the theoretical resolution limit at 1.24&mu;m.
+                                <br>
+                                <br>
+                                
+                                <b>Part II: Computer Aided Design</b><br>
+
+                                I went through over 5 iterations of mounts to hold the components in a continuous path.  
+                                Iterations 1 and 2 used two lead screws to hold the mounts. 
+                                For iterations 3 and 4, I decided to reduce the system to a single lead screw.
+                                This allowed me to adjust the distances between components with greater efficiency. 
+                                Once I was comfortable with the distances and focal lengths, I added the second lead to ensure the mounts didn't rotate around its axis.
+
                                 <img src="assets/DWL/MountIterations.jpg" width="350" alt="Mount Iterations" style="display: block; margin: 0 auto; transform: rotate(270deg)"><br>
 
-                                The biggest challenge was creating a continuous optical chain between the laser and the microscope objective. To achieve this, I created a double rail system using lead screws.
-                                <img src="assets/DWL/3DModelLead.png" width="500" alt="CAD Model" style="display: block; margin: 0 auto;"><br>
-                                <img src="assets/DWL/InitialPrototype.jpg" width="400" alt="CAD Model" style="display: block; margin: 0 auto;"><br>
-                                
 
-                                Once the CAD mounts were finalized, and the double rail system was implemented, I designed a table mount to hold the motion system and electronics. The motion system iteself was borrowed from the HackerFab community.<br><br>
-                                <img src="assets/DWL/FinalPrototype.jpg" width="450" alt="CAD Model" style="display: block; margin: 0 auto;"><br>
+                                The next challenge was the base. The HackerFab design uses an acrylic board, which allows for transperancy between the optics and the motion stage. 
+                                I did not have access to acrylic at the time, so I opted for a standard 3D-printed plate. 
+                                I was very happy that my very first design showed a dot, as it meant I was on the right track and that building a DWL was possible. <br><br>
 
-                                <video width="640" height="360" controls poster="thumbnail.jpg">
+                                Slowly, but surely, I added an elevated base plate (to allow for the motion system), the microscope objective, the leads, and the table. 
+                                The final CAD model is shown below. 
+                                <br>
+                                <br>
+
+                                <img src="assets/DWL/FinalCAD.png" width="800" alt="Final CAD" style="display: block; margin: 0 auto;"><br><br>
+
+                                <b>Part III: Prototyping</b>
+                                <br>
+                                As I designed the CAD mounts, I slowly built the system alongside each iteration.
+                                The final prototype is shown below, along with a video showing a 1x1mm square being traced.
+                                <img src="assets/DWL/FinalPrototype.jpg" width="350" alt="Final Prototype" style="display: block; margin: 0 auto;">
+                                <br>
+                                <br>
+                                <video width="640" height="360" controls poster="assets/DWL/FabProfile.jpg">
                                     <source src="assets/DWL/LDW-V0-DEMO.mov" type="video/mp4">
                                     <source src="movie.webm" type="video/webm">
                                     Your browser does not support the video tag.
                                 </video>
                                 <br><br>
-                                Currently, I am collaborating with the Virginia Tech Cleanroom to spincoat and pattern the chips for final characterization.
+
+                                <b>Part IV: Testing and Characterization</b><br>
+
+                                To determine the dosage, I had to determine the power intensity at the spot size. 
+                                I do not own an optical power meter, so
+                                to achieve a very crude first order approximation, I used a blue LED in reverse as a photodiode. 
+                                The LED was placed at the focal plane of the objective.
+                                I then used a Digital Multimeter (DMM) to measure the current and voltage across the LED.
+
+                                <br>
+                                <br>
                                 
+                                <img src="assets/DWL/LED_Photodiode.png" width="250" alt="LED Photodiode" style="display: block; margin: 0 auto;"><br>
+                                
+                                A simple P = IV calculation gave me a power reading of 6.699 &mu;W.
+                                <br>
+                                <br>
+                                Once I had a power intensity value, and an approximated spot size of 2mm, I could calculate the required exposure time to achieve a dosage of 100mJ/cm<sup>2</sup>.
+                                
+                                I then programmmed a GUI in python to help me determine the feedrate.
+                                
+                                <img src="assets/DWL/LithoTerminal.png" width="350" alt="Graphical User Interface" style="display: block; margin: 0 auto;">
 
-
+                                <br>
+                                <br>
+                                Currently, I am collaborating with the Virginia Tech Cleanroom to spincoat and pattern the chips for final characterization. 
+                                My process involves dicing a 4 inch wafer into 35 12x12mm dies. 
+                                The dies will be spin-coated with S1813 due to its forgiving nature and availability in the cleanroom. 
+                                The dies will then be patterned using the laser direct-write machine. 
+                                The final step will be to develop the chips and characterize the patterns using an optical microscope.
+                                <br>
+                                <br>
                             </p>
                 </details>
                 <hr>
