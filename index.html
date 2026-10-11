@@ -75,7 +75,52 @@
     <hr>
 
         <h2 align="center" style="background-color:rgb(221, 216, 216)"> My Projects </h2>
+            <details>
+                    <summary><b>Maskless Direct-Write Laser Lithography Machine: </b>Pattern chips at a um-scale</summary>
+                    <p>
 
+                        <h2>1. Overview</h2>
+                            <p>
+                                <b>Problem Statement:</b> <br>
+                                    Optical Photolithography is hidden behind huge barriers of entry. As such, many researchers do not have the access to fabrication equipment to build and test custom designs. This creates a bottleneck on research by slowing design iteration. Therefore, a cheaper and accessible alternative needs to be created to allow for cheap rapid prototyping for researchers without worrying about the cost, time, and difficulty of fabricating a custom design.
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <b>Purpose Statement:</b> <br>
+                                    The purpose of this project is to design, build, and test a low-cost maskless optical laser direct-write photolithography machine capable of a 1 μm resolution to enable affordable and accessible rapid prototyping for researchers.
+                            </p>
+                            <p>
+                                <br>
+                                <b>Design Process:</b><br>
+                                I built this over the summer of 2026 with the goal of achieving um-scale patterns. I'd work on this during the evenings while participating in an internship at NAVAIR during the day. This project involves hours of parsing dense research, watching and re-watching YouTube videos, and designing and re-designing CAD mounts. I had a lot of fun over the course of the summer, and I'm very excited for where this project will go.<br><br>
+
+                                The design is based on the Heidelberg article: 40 Years of Direct Writing. The motion system is based on a combination of the designs developed by Sam Zeloof, BreakingTaps, HuygensOptics, and the HackerFab community. However, this project departs from the design in that it uses a laser, as opposed to a DMM to pattern chips. <br><br>
+                                <img src="assets/DWL/SimplifiedSystem.png" width="450" alt="Simplified System Overview" style="display: block; margin: 0 auto;"><br>
+
+                                The first step was bringing this design into reality using custom 3D printed optical mounts. I went through over 5 iterations of mounts to hold the laser, condenser lens, and microscope objective. I struggled a lot with aligning the condenser lens with a 20um pinhole, and eventually set the pinhole aside for the initial design. 
+                                <img src="assets/DWL/MountIterations.jpg" width="350" alt="Mount Iterations" style="display: block; margin: 0 auto; transform: rotate(270deg)"><br>
+
+                                The biggest challenge was creating a continuous optical chain between the laser and the microscope objective. To achieve this, I created a double rail system using lead screws.
+                                <img src="assets/DWL/3DModelLead.png" width="500" alt="CAD Model" style="display: block; margin: 0 auto;"><br>
+                                <img src="assets/DWL/InitialPrototype.jpg" width="400" alt="CAD Model" style="display: block; margin: 0 auto;"><br>
+                                
+
+                                Once the CAD mounts were finalized, and the double rail system was implemented, I designed a table mount to hold the motion system and electronics. The motion system iteself was borrowed from the HackerFab community.<br><br>
+                                <img src="assets/DWL/FinalPrototype.jpg" width="450" alt="CAD Model" style="display: block; margin: 0 auto;"><br>
+
+                                <video width="640" height="360" controls poster="thumbnail.jpg">
+                                    <source src="assets/DWL/LDW-V0-DEMO.mov" type="video/mp4">
+                                    <source src="movie.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <br><br>
+                                Currently, I am collaborating with the Virginia Tech Cleanroom to spincoat and pattern the chips for final characterization.
+                                
+
+
+                            </p>
+                </details>
+                <hr>
             <details>
             <summary><b>Piezo Pickup:</b> five-stage BJT/MOSFET transistor audio amplifier</summary>
             <hr>
